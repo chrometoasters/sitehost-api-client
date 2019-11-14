@@ -30,9 +30,9 @@
         "symbiote/silverstripe-phpstan": "~3.0.2"
     },
     "scripts": {
-        "lint": "parallel-lint src api.php --colors && ecs check src api.php --ansi",
-        "lint-fix": "parallel-lint src api.php --colors && ecs check src api.php --fix --ansi",
-        "stan": "phpstan analyse src api.php -c phpstan.neon -a vendor/symbiote/silverstripe-phpstan/bootstrap.php --level 1  --ansi",
+        "lint": "parallel-lint src --colors && ecs check src --ansi",
+        "lint-fix": "parallel-lint src --colors && ecs check src --fix --ansi",
+        "stan": "phpstan analyse src -c phpstan.neon -a vendor/symbiote/silverstripe-phpstan/bootstrap.php --level 1  --ansi",
         "full-check": [
             "@lint-fix",
             "@stan"
