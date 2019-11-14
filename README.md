@@ -4,6 +4,10 @@
 
 This is a work in progress piece of code that may or may not get extended further as/when needed.
 
+## API documentation
+
+[SiteHost's API documentation](https://docs.sitehost.nz/api/)
+
 ## Features
 
 - Get API info
