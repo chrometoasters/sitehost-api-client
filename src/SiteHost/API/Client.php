@@ -273,4 +273,29 @@ class Client
     {
         return $this->updateStackInfo($server, $stack, '', '', $environments);
     }
+
+
+    /**
+     * Restart a stack
+     *
+     * @param string $server
+     * @param string $stack
+     * @param string $label
+     * @param string $dockerComposeFile
+     * @param string $environments
+     * @return Response
+     */
+    public function restartStack(string $server, string $stack, string $container = '')
+    {
+        $data = [
+            'server' => $server,
+            'name'   => $stack,
+        ];
+
+        if ($container) {
+            $data['containers[]'] = $container;
+        }
+
+        return $this->requestPOST(Constants::ENDPOINT_CLOUD_STACK_RESTART, $data);
+    }
 }

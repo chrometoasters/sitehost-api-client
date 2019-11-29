@@ -26,6 +26,13 @@ final class Constants
     const ENDPOINT_CLOUD_STACK_UPDATE = '/1.0/cloud/stack/update.json';
 
     /**
+     * Restart stack
+     *
+     * see https://docs.sitehost.nz/api/v1/?path=/cloud/stack/restart&action=POST
+     */
+    const ENDPOINT_CLOUD_STACK_RESTART = '/1.0/cloud/stack/restart.json';
+
+    /**
      * Get job information
      *
      * see https://docs.sitehost.nz/api/v1/?path=/job/get&action=GET
