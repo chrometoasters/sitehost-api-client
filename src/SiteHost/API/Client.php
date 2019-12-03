@@ -123,7 +123,7 @@ class Client
      * @param array $data
      * @return Response
      */
-    private function requestGET(string $endpoint, array $data = [])
+    private function requestGET(string $endpoint, array $data = []): Response
     {
         $url = $this->api_url . $endpoint . '?' . http_build_query($this->prepareQueryData($data));
         $ch  = $this->getCURL($url);
@@ -139,7 +139,7 @@ class Client
      * @param array $data
      * @return Response
      */
-    private function requestPOST(string $endpoint, array $data)
+    private function requestPOST(string $endpoint, array $data): Response
     {
         $url = $this->api_url . $endpoint;
         $ch  = $this->getCURL($url);
@@ -158,7 +158,7 @@ class Client
      * @param string $jobType
      * @return Job
      */
-    public function getJobInfo(string $jobID, string $jobType = Constants::JOB_TYPE_SCHEDULER)
+    public function getJobInfo(string $jobID, string $jobType = Constants::JOB_TYPE_SCHEDULER): Job
     {
         $response = $this->requestGET(Constants::ENDPOINT_JOB_GET, ['job_id' => $jobID, 'type' => $jobType]);
 
@@ -174,7 +174,7 @@ class Client
      *
      * @return Response
      */
-    public function getAPIInfo()
+    public function getAPIInfo(): Response
     {
         return $this->requestGET(Constants::ENDPOINT_API_GETINFO);
     }
@@ -191,7 +191,7 @@ class Client
      * @param string $stack
      * @return Response
      */
-    public function getStackInfo(string $server, string $stack)
+    public function getStackInfo(string $server, string $stack): Response
     {
         return $this->requestGET(Constants::ENDPOINT_CLOUD_STACK_GET, ['server' => $server, 'name' => $stack]);
     }
@@ -212,7 +212,7 @@ class Client
      * @param string $environments
      * @return Response
      */
-    public function updateStackInfo(string $server, string $stack, string $label = '', string $dockerComposeFile = '', string $environments = '')
+    public function updateStackInfo(string $server, string $stack, string $label = '', string $dockerComposeFile = '', string $environments = ''): Response
     {
         $data = [
             'server' => $server,
@@ -241,7 +241,7 @@ class Client
      * @param string $label
      * @return Response
      */
-    public function updateStackLabel(string $server, string $stack, string $label)
+    public function updateStackLabel(string $server, string $stack, string $label): Response
     {
         return $this->updateStackInfo($server, $stack, $label);
     }
@@ -255,7 +255,7 @@ class Client
      * @param string $dockerComposeFile
      * @return Response
      */
-    public function updateStackDockerComposeFile(string $server, string $stack, string $dockerComposeFile)
+    public function updateStackDockerComposeFile(string $server, string $stack, string $dockerComposeFile): Response
     {
         return $this->updateStackInfo($server, $stack, '', $dockerComposeFile);
     }
@@ -269,7 +269,7 @@ class Client
      * @param string $environments
      * @return Response
      */
-    public function updateStackEnvironments(string $server, string $stack, string $environments)
+    public function updateStackEnvironments(string $server, string $stack, string $environments): Response
     {
         return $this->updateStackInfo($server, $stack, '', '', $environments);
     }
@@ -285,7 +285,7 @@ class Client
      * @param string $environments
      * @return Response
      */
-    public function restartStack(string $server, string $stack, string $container = '')
+    public function restartStack(string $server, string $stack, string $container = ''): Response
     {
         $data = [
             'server' => $server,

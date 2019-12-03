@@ -10,7 +10,7 @@ class Job extends Response
      * @param Response $response
      * @return Job
      */
-    public static function createFromResponse(Response $response)
+    public static function createFromResponse(Response $response): self
     {
         $res = null;
 
@@ -30,7 +30,7 @@ class Job extends Response
      *
      * @return string
      */
-    public function getJobState()
+    public function getJobState(): string
     {
         if ($this->isValid()) {
             return (string) $this->getDataItem('state');
@@ -45,7 +45,7 @@ class Job extends Response
      *
      * @return bool
      */
-    public function isPending()
+    public function isPending(): bool
     {
         return $this->getJobState() === Constants::JOB_STATE_PENDING;
     }
@@ -56,7 +56,7 @@ class Job extends Response
      *
      * @return bool
      */
-    public function isRunning()
+    public function isRunning(): bool
     {
         return $this->getJobState() === Constants::JOB_STATE_RUNNING;
     }
@@ -67,7 +67,7 @@ class Job extends Response
      *
      * @return bool
      */
-    public function hasCompleted()
+    public function hasCompleted(): bool
     {
         return $this->getJobState() === Constants::JOB_STATE_COMPLETED;
     }
@@ -78,7 +78,7 @@ class Job extends Response
      *
      * @return bool
      */
-    public function hasFailed()
+    public function hasFailed(): bool
     {
         return $this->getJobState() === Constants::JOB_STATE_FAILED;
     }

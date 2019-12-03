@@ -22,7 +22,7 @@ class Helpers
      * @param array $dockerComposeFile
      * @return string
      */
-    public static function encodeDockerComposeYAMLFile(array $dockerComposeFile)
+    public static function encodeDockerComposeYAMLFile(array $dockerComposeFile): string
     {
         return yaml_emit($dockerComposeFile);
     }
@@ -42,7 +42,7 @@ class Helpers
      * @param $value
      * @return bool
      */
-    private static function pushValueToSectionList(array &$section, string $listPrefix, $value)
+    private static function pushValueToSectionList(array &$section, string $listPrefix, $value): bool
     {
         foreach ($section as $key => $val) {
             if (mb_strpos($val, $listPrefix) === 0) {
