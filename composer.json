@@ -26,13 +26,12 @@
     },
     "require-dev": {
         "chrometoaster/backend-coding-standards": "~1.1.0",
-        "phpstan/phpstan-shim": "~0.9.2",
-        "symbiote/silverstripe-phpstan": "~3.0.2"
+        "phpstan/phpstan-shim": "~0.9.2"
     },
     "scripts": {
         "lint": "parallel-lint src --colors && ecs check src --ansi",
         "lint-fix": "parallel-lint src --colors && ecs check src --fix --ansi",
-        "stan": "phpstan analyse src -c phpstan.neon -a vendor/symbiote/silverstripe-phpstan/bootstrap.php --level 1  --ansi",
+        "stan": "phpstan analyse src -c phpstan.neon --level 1  --ansi",
         "full-check": [
             "@lint-fix",
             "@stan"
