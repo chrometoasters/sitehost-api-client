@@ -41,6 +41,31 @@ class Job extends Response
 
 
     /**
+     * Get job logs
+     *
+     * Accepts optional sprintf-like string to format the output.
+     * Each log item provides a date (in YYYY-MM-DD hh:mm:ss format) and a message.
+     *
+     * @param string $format
+     * @return array
+     */
+    public function getJobLogs(string $format = '[%s] %s'): array
+    {
+        $logs = [];
+
+        if ($this->isValid()) {
+            $jobLogs = (array) $this->getDataItem('logs');
+
+            foreach ($jobLogs as $jobLog) {
+                $logs[] = sprintf($format, $jobLog->date, $jobLog->message);
+            }
+        }
+
+        return $logs;
+    }
+
+
+    /**
      * Is the job still pending?
      *
      * @return bool
