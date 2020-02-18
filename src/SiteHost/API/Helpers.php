@@ -2,6 +2,8 @@
 
 namespace Chrometoaster\SiteHost\API;
 
+use Symfony\Component\Yaml\Yaml;
+
 class Helpers
 {
     /**
@@ -12,7 +14,7 @@ class Helpers
      */
     public static function decodeDockerComposeYAMLFile(Response $stackInfo): ?array
     {
-        return $stackInfo->isValid() ? yaml_parse($stackInfo->getDataItem('docker_file')) : null;
+        return $stackInfo->isValid() ? Yaml::parse($stackInfo->getDataItem('docker_file')) : null;
     }
 
 
@@ -24,7 +26,7 @@ class Helpers
      */
     public static function encodeDockerComposeYAMLFile(array $dockerComposeFile): string
     {
-        return yaml_emit($dockerComposeFile);
+        return Yaml::dump($dockerComposeFile);
     }
 
 
